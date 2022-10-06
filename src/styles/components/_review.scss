@@ -1,0 +1,28 @@
+.review {
+  &__img {
+    margin: 0 0 rem(24);
+    width: rem(72);
+    height: rem(72);
+  }
+
+  &__text {
+    color: var(--color-mako);
+
+    @extend .text-size-xs;
+    @extend .text-reset;
+
+    /* stylelint-disable-next-line order/order */
+    &_mgb-24 {
+      margin: 0 0 rem(24);
+    }
+  }
+
+  &__name {
+    margin: 0 0 rem(4);
+    font-weight: 700;
+  }
+
+  &__job {
+    color: var(--color-stormGray);
+  }
+}

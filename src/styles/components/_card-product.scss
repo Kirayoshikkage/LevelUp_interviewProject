@@ -1,0 +1,44 @@
+.card-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+
+  &__item_child-margin > *:not(:last-child) {
+    margin: 0 0 1rem;
+  }
+
+  &__img {
+    width: rem(146);
+    height: rem(226);
+  }
+
+  &__name {
+    text-transform: uppercase;
+    color: var(--color-mako);
+
+    @extend .text-reset;
+    @extend .text-size-l;
+  }
+
+  &__desc {
+    text-align: justify;
+    color: var(--color-mako);
+
+    @extend .text-reset;
+    @extend .text-size-xs;
+  }
+
+  &__price {
+    color: var(--color-mako);
+
+    @extend .text-reset;
+    @extend .text-size-l;
+
+    /* stylelint-disable-next-line order/order */
+    span {
+      color: var(--color-primary);
+    }
+  }
+}

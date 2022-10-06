@@ -1,0 +1,29 @@
+@import '../common/common';
+
+// Vendor
+
+@import '../vendor/swiper';
+
+// Components
+
+@import '../components/navigation';
+@import '../components/means-of-communication';
+@import '../components/burger-trigger';
+@import '../components/ingredient';
+@import '../components/buttons-slider';
+@import '../components/review';
+@import '../components/product-features';
+@import '../components/card-product';
+@import '../components/form';
+@import '../components/sale';
+
+// section
+
+@import '../section/header';
+@import '../section/burger-menu';
+@import '../section/hero';
+@import '../section/compound';
+@import '../section/reviews';
+@import '../section/promo';
+@import '../section/checkout';
+@import '../section/modal-successful-sending';

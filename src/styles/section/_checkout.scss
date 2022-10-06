@@ -1,0 +1,126 @@
+.checkout {
+  background-color: rgba(66, 69, 81, 10%);
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    @include small-tablet {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__item {
+    flex: 1 1 calc(50% - 2rem);
+
+    @include small-tablet {
+      flex: 1 1 auto;
+      width: 100%;
+    }
+  }
+
+  .form {
+    @extend .form_size-l;
+    @extend .form_style-dark;
+    @extend .form_primary-animation;
+
+    /* stylelint-disable-next-line order/order */
+    &__item {
+      &:not(:last-child) {
+        margin: 0 0 rem(24);
+
+        @include mobile {
+          margin: 0 0 rem(12);
+        }
+      }
+
+      &:last-of-type {
+        margin: 0 0 rem(48);
+
+        @include mobile {
+          margin: 0 0 rem(24);
+        }
+      }
+    }
+
+    &__button {
+      @extend .button_size-large;
+      @extend .button_background-primary;
+      @extend .button_color-white;
+      @extend .button_animation-dark-style;
+
+      /* stylelint-disable-next-line order/order */
+      @include small-tablet {
+        display: block;
+        margin: 0 auto;
+        max-width: max-content;
+      }
+
+      @include mobile {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      @media (orientation: landscape) and (max-width: rem(767.98)) and (min-width: rem(576)) {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .card-product {
+    position: relative;
+
+    &__price {
+      animation: animation 5s 0s both infinite;
+
+      @keyframes animation {
+        0%,
+        20% {
+          transform: translate3d(0, 0, 0);
+        }
+
+        10%,
+        14%,
+        18%,
+        2%,
+        6% {
+          transform: translate3d(0, rem(-7), 0);
+        }
+
+        12%,
+        16%,
+        4%,
+        8% {
+          transform: translate3d(0, rem(7), 0);
+        }
+      }
+    }
+
+    @media (orientation: landscape) and (max-width: rem(767.98)) {
+      flex-direction: row;
+
+      &__item {
+        flex: 1 1 calc(50% - 1rem);
+      }
+    }
+  }
+
+  .sale {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    transform: rotate(30deg);
+
+    @media (orientation: landscape) and (max-width: rem(767.98)) {
+      left: 1rem;
+      right: auto;
+      transform: rotate(-30deg);
+    }
+  }
+
+  &__timer {
+    color: var(--color-primary);
+  }
+}

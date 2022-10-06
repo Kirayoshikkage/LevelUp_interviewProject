@@ -1,0 +1,26 @@
+.ingredient {
+  position: relative;
+  border: rem(2) solid var(--color-primary);
+  border-radius: rem(4);
+  padding: rem(72) 1rem 1rem;
+  height: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 1rem;
+    width: rem(40);
+    height: rem(40);
+    background-position: center center;
+    transform: translateX(-50%);
+  }
+
+  &__name {
+    text-align: center;
+    color: var(--color-primary);
+
+    @extend .text-reset;
+    @extend .text-size-m;
+  }
+}

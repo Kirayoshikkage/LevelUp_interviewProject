@@ -1,0 +1,102 @@
+.compound {
+  &__content {
+    position: relative;
+    margin: 0 0 rem(60);
+
+    @include mobile {
+      margin: 0 0 rem(24);
+    }
+
+    @media (orientation: landscape) and (max-width: rem(767.98)) and (min-width: rem(576)) {
+      margin: 0 0 rem(24);
+    }
+  }
+
+  &__list {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, rem(275));
+    gap: 1.5rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, rem(150));
+    }
+
+    @include small-tablet {
+      grid-template-columns: repeat(auto-fill, minmax(rem(150), 1fr));
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      border: rem(2) solid var(--color-primary);
+      width: 50%;
+
+      @include laptop {
+        width: 25%;
+      }
+    }
+
+    &:nth-child(odd)::before {
+      right: rem(1);
+      transform: translate(100%, 50%);
+    }
+
+    &:nth-child(even)::before {
+      left: 0;
+      transform: translate(-100%, 50%);
+    }
+
+    @include small-tablet {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .ingredient::before {
+    background-size: rem(80) rem(80);
+  }
+
+  @each $ingredient in banana, pineapple, strawberry {
+    .ingredient_#{$ingredient}::before {
+      background-image: url('../img/#{$ingredient}.svg');
+    }
+  }
+
+  /* stylelint-disable-next-line order/order */
+  &__img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: rem(291);
+    height: rem(451);
+    transform: translate(-50%, -50%);
+
+    @include small-tablet {
+      display: none;
+    }
+  }
+
+  .button {
+    display: block;
+    margin: 0 auto;
+    max-width: max-content;
+
+    @extend .button_size-large;
+    @extend .button_background-primary;
+    @extend .button_color-white;
+    @extend .button_animation-dark-style;
+
+    /* stylelint-disable-next-line order/order */
+    @include mobile {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+}

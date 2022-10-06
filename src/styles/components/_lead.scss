@@ -1,0 +1,12 @@
+.lead {
+  font-size: rem(72);
+  text-transform: uppercase;
+  color: var(--color-white);
+
+  @extend .text-reset;
+
+  /* stylelint-disable-next-line order/order */
+  @include mobile {
+    font-size: rem(56);
+  }
+}

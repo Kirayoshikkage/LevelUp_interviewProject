@@ -1,0 +1,61 @@
+.buttons-slider {
+  display: flex;
+
+  &__button {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    outline: none;
+    border-radius: 100%;
+    width: rem(48);
+    height: rem(48);
+    transition-property: background, opacity, border;
+    transition-duration: $transitionDuration;
+
+    &::after {
+      display: none;
+    }
+
+    &_prev {
+      transform: rotate(180deg);
+    }
+
+    &_style-primary {
+      fill: var(--color-mako);
+
+      &:not(.swiper-button-disabled) {
+        fill: var(--color-white);
+        background-color: var(--color-primary);
+
+        @include touch-device {
+          background-color: var(--color-radicalRed);
+        }
+      }
+
+      &.swiper-button-disabled {
+        opacity: 1;
+      }
+
+      @include mouse-device {
+        &:hover,
+        &:focus {
+          background-color: var(--color-mako);
+
+          &.swiper-button-disabled {
+            fill: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+
+  &__icon {
+    width: rem(24);
+    height: rem(24);
+    transition-property: fill;
+    transition-duration: $transitionDuration;
+  }
+}

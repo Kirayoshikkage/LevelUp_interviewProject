@@ -1,0 +1,16 @@
+.title {
+  margin: 0 0 rem(60);
+  color: var(--color-mako);
+
+  @extend .text-reset;
+  @extend .text-size-xl;
+
+  /* stylelint-disable-next-line order/order */
+  @include mobile {
+    margin: 0 0 rem(24);
+  }
+
+  @media (orientation: landscape) and (max-width: rem(1023.98)) and (min-width: rem(576)) and (max-height: rem(500)) {
+    margin: 0 0 rem(24);
+  }
+}

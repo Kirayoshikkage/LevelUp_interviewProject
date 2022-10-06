@@ -1,0 +1,102 @@
+.promo {
+  padding: rem(170) 0 rem(100);
+
+  .title {
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-areas: 'img desc' 'features features';
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(64) rem(32);
+
+    @include small-tablet {
+      grid-template-areas: 'desc' 'features';
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    @include mobile {
+      gap: rem(24);
+    }
+  }
+
+  &__item {
+    &_img {
+      align-self: center;
+      grid-area: img;
+
+      @include small-tablet {
+        display: none;
+      }
+    }
+
+    &_desc {
+      align-self: center;
+      grid-area: desc;
+    }
+
+    &_features {
+      grid-area: features;
+    }
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__text {
+    margin: 0 0 rem(60);
+    color: var(--color-mako);
+
+    @extend .text-reset;
+    @extend .text-size-xs;
+
+    /* stylelint-disable-next-line order/order */
+    @include md {
+      text-indent: 2rem;
+    }
+
+    @include mobile {
+      margin: 0 0 rem(24);
+    }
+  }
+
+  .button {
+    @extend .button_size-large;
+    @extend .button_background-primary;
+    @extend .button_color-white;
+    @extend .button_animation-dark-style;
+
+    /* stylelint-disable-next-line order/order */
+    @include tablet {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .product-features {
+    &__item_quality::before {
+      background-image: url('../img/quality.svg');
+    }
+  }
+
+  @include tablet {
+    padding: rem(100) 0;
+  }
+
+  @include small-tablet {
+    padding: rem(50) 0;
+  }
+
+  @media (orientation: landscape) and (max-width: rem(1023.98)) and (min-width: rem(768)) and (max-height: rem(500)) {
+    padding: rem(50) 0;
+  }
+
+  @media (orientation: landscape) and (max-width: rem(1023.98)) and (min-width: rem(576)) and (max-height: rem(500)) {
+    &__text {
+      margin: 0 0 rem(24);
+    }
+  }
+}

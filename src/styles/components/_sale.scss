@@ -1,0 +1,20 @@
+.sale {
+  border: rem(2) solid var(--color-primary);
+  border-radius: 50%;
+  padding: 1.5rem 2rem;
+
+  &__text {
+    color: var(--color-primary);
+
+    @extend .text-reset;
+    @extend .text-size-s;
+  }
+
+  &__subtitle {
+    text-transform: uppercase;
+  }
+
+  &__old-price {
+    text-decoration: line-through;
+  }
+}

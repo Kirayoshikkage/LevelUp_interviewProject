@@ -1,0 +1,114 @@
+.header {
+  padding: rem(22) 0;
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: rem(20);
+  }
+
+  .logo {
+    position: relative;
+
+    &__img {
+      width: rem(124);
+      height: rem(42);
+    }
+
+    @include small-tablet {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @include mobile {
+      position: relative;
+      left: 0;
+      transform: none;
+    }
+  }
+
+  .navigation {
+    &__list {
+      display: grid;
+      grid-auto-flow: row dense;
+      grid-template-columns: repeat(4, auto);
+      gap: rem(20) rem(40);
+
+      @include tablet {
+        gap: rem(20);
+      }
+    }
+
+    @include small-tablet {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    gap: rem(36);
+
+    @include laptop {
+      gap: 1rem;
+    }
+
+    @include small-tablet {
+      order: -1;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .means-of-communication {
+    display: grid;
+    flex-shrink: 0;
+    align-items: center;
+    grid-template-areas:
+      'icon text'
+      'icon contact';
+    gap: 0 rem(12);
+
+    &__icon {
+      grid-area: icon;
+    }
+
+    &__text {
+      grid-area: text;
+    }
+
+    &__contact {
+      grid-area: contact;
+    }
+
+    @include laptop {
+      grid-template-areas: 'icon';
+
+      &__text,
+      &__contact {
+        @include visually-hidden;
+      }
+    }
+  }
+
+  .burger-trigger {
+    display: none;
+
+    @include small-tablet {
+      display: grid;
+    }
+  }
+
+  .logo,
+  .navigation,
+  &__list {
+    z-index: 101;
+    flex-shrink: 0;
+  }
+}
