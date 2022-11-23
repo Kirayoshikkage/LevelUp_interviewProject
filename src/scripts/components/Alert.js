@@ -12,6 +12,8 @@ export default class Alert {
 
     this._animation = animation;
     this._focusLock = focusLock;
+
+    this.init();
   }
 
   _isOpen = false;
@@ -27,7 +29,7 @@ export default class Alert {
 
     this._closesWindowOnClickOutside();
 
-    this._setsStyleHiding();
+    this.close();
   }
 
   _throwsError() {
@@ -65,7 +67,9 @@ export default class Alert {
 
     this._setsStyleHiding();
 
-    this._switchesClassActiveTrigger();
+    this._switchesExpandedTrigger();
+
+    this._changesTextForA11yAtTrigger();
 
     this._changesClassActiviteAtWindow();
 
@@ -89,16 +93,28 @@ export default class Alert {
     this._container.style.opacity = 0;
   }
 
-  _switchesClassActiveTrigger() {
+  _changesTextForA11yAtTrigger() {
     if (!this._trigger) return;
 
     if (this._isOpen) {
-      this._trigger.classList.add('active');
+      this._trigger.setAttribute('aria-label', 'Закрыть бургер меню');
 
       return;
     }
 
-    this._trigger.classList.remove('active');
+    this._trigger.setAttribute('aria-label', 'Открыть бургер меню');
+  }
+
+  _switchesExpandedTrigger() {
+    if (!this._trigger) return;
+
+    if (this._isOpen) {
+      this._trigger.setAttribute('aria-expanded', true);
+
+      return;
+    }
+
+    this._trigger.setAttribute('aria-expanded', false);
   }
 
   _changesClassActiviteAtWindow() {
@@ -143,7 +159,9 @@ export default class Alert {
 
     this._switchesBlockScroll();
 
-    this._switchesClassActiveTrigger();
+    this._switchesExpandedTrigger();
+
+    this._changesTextForA11yAtTrigger();
 
     this._changesClassActiviteAtWindow();
 

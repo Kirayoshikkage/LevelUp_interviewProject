@@ -2,21 +2,20 @@
   z-index: 101;
   display: grid;
   grid-template-columns: 1fr;
-  width: rem(24);
-  transition-property: transform;
+  transition-property: transform, background;
   transition-duration: $transitionDuration;
   gap: rem(7.5);
 
   &__item {
     border-radius: rem(4);
-    width: 100%;
+    width: rem(24);
     height: rem(3);
     background-color: var(--color-primary);
     transition-property: transform, opacity, visibility, background;
     transition-duration: $transitionDuration;
   }
 
-  &.active {
+  &[aria-expanded='true'] {
     .burger-trigger__item {
       &:nth-child(1) {
         transform: rotate(45deg) translate(rem(8), rem(8));
@@ -35,9 +34,16 @@
   }
 
   @include mouse-device {
-    &:hover,
-    &:focus-visible {
-      transform: scale(1.25);
+    padding: 0.5rem;
+    transform: translateX(0.5rem);
+
+    &:focus,
+    &:hover {
+      background-color: var(--color-primary);
+
+      .burger-trigger__item {
+        background-color: var(--color-white);
+      }
     }
   }
 

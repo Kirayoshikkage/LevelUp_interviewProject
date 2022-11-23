@@ -5,18 +5,15 @@ import insertsErrorNotificationInHTML from './insertsErrorNotificationInHTML.js'
 export default function showsErrorNotification() {
   insertsErrorNotificationInHTML();
 
-  const focusLock = new FocusLock({
-    exception: '.error-notification',
-    disableOnMobileDevice: true,
-  });
-  focusLock.init();
-
   const errorNotification = new Modal({
     container: '.error-notification',
     body: 'modal__body',
-    focusLock,
+    focusLock: new FocusLock({
+      exception: '.error-notification',
+      disableOnMobileDevice: true,
+    }),
   });
-  errorNotification.init();
+
   setTimeout(() => {
     errorNotification.open();
   });

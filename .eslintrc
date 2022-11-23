@@ -4,7 +4,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["airbnb/base"],
+  "extends": ["airbnb/base", "prettier"],
   "rules": {
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",

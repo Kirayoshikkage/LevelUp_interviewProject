@@ -1,11 +1,16 @@
 export default class FocusLock {
   constructor({
-    exception = false, container = 'body', mutationObserver = false, disableOnMobileDevice = false,
+    exception = false,
+    container = 'body',
+    mutationObserver = false,
+    disableOnMobileDevice = false,
   } = {}) {
     this._exception = exception;
     this._container = container;
     this._mutationObserver = mutationObserver;
     this._disableOnMobileDevice = disableOnMobileDevice;
+
+    this.init();
   }
 
   _listElementsToBlock = new Set();
@@ -39,7 +44,7 @@ export default class FocusLock {
 
     setTimeout(() => {
       this._populatesTheListElementsToBlock(
-        document.querySelectorAll(`${this._container} *`),
+        document.querySelectorAll(`${this._container} *`)
       );
     }, 0);
 
@@ -47,15 +52,16 @@ export default class FocusLock {
   }
 
   _userDeviceIsPhone() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i
-      .test(navigator.userAgent);
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+      navigator.userAgent
+    );
   }
 
   _throwsErrors() {
     if (
-      this._exception
-      && !Array.isArray(this._exception)
-      && typeof this._exception !== 'string'
+      this._exception &&
+      !Array.isArray(this._exception) &&
+      typeof this._exception !== 'string'
     ) {
       throw new Error('Exception wrong type');
     }
@@ -144,16 +150,19 @@ export default class FocusLock {
     if (!this._mutationObserver) return;
 
     this._linkOnMutationObserver = new MutationObserver(
-      this._handlesMutationObserver.bind(this),
+      this._handlesMutationObserver.bind(this)
     );
 
-    this._linkOnMutationObserver.observe(document.querySelector(this._container), {
-      childList: true,
-      subtree: true,
-      characterData: false,
-      attributes: true,
-      attributeFilter: ['tabindex'],
-    });
+    this._linkOnMutationObserver.observe(
+      document.querySelector(this._container),
+      {
+        childList: true,
+        subtree: true,
+        characterData: false,
+        attributes: true,
+        attributeFilter: ['tabindex'],
+      }
+    );
   }
 
   _handlesMutationObserver(listMutation) {
@@ -179,7 +188,9 @@ export default class FocusLock {
   }
 
   _removesElementsFromBlockList(listElements) {
-    listElements.forEach((element) => this._removesElementFromBlockList(element));
+    listElements.forEach((element) =>
+      this._removesElementFromBlockList(element)
+    );
   }
 
   _removesElementFromBlockList(element) {

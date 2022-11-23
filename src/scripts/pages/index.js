@@ -2,7 +2,7 @@ import _common from '../common/_common.js';
 import errorHandler from '../helpers/errorHandler.js';
 import getFontSizeBody from '../helpers/getFontSizeBody.js';
 import BurgerMenu from '../components/BurgerMenu.js';
-import { reviewsSlider } from '../helpers/configuresSliders.js';
+import reviewsSlider from '../helpers/configuresSliders.js';
 import FocusLock from '../components/FocusLock.js';
 import Modal from '../components/Modal.js';
 import Timer from '../components/Timer.js';
@@ -11,11 +11,14 @@ errorHandler(() => {
   _common();
 
   const focusLock = new FocusLock({
-    exception: ['.burger-menu', '.header .burger-trigger', '.modal-successful-sending'],
-    MutationObserver: true,
+    exception: [
+      '.burger-menu',
+      '.header .burger-trigger',
+      '.modal-successful-sending',
+    ],
+    mutationObserver: true,
     disableOnMobileDevice: true,
   });
-  focusLock.init();
 
   const burgerMenu = new BurgerMenu({
     container: '.burger-menu',
@@ -31,7 +34,6 @@ errorHandler(() => {
     },
     focusLock,
   });
-  burgerMenu.init();
 
   reviewsSlider();
 
@@ -42,10 +44,8 @@ errorHandler(() => {
     body: '.modal__body',
     focusLock,
   });
+  // eslint-disable-next-line no-unused-vars
   const checkoutTimer = new Timer('.checkout__timer', '00:30:00');
-
-  sendingStatusCheckoutForm.init();
-  checkoutTimer.init();
 
   checkoutForm.addEventListener('submit', (e) => {
     e.preventDefault();

@@ -3,6 +3,8 @@ export default class Timer {
   constructor(container, initialTimestamp) {
     this._container = document.querySelector(container);
     this._initialTimestamp = initialTimestamp;
+
+    this.init();
   }
 
   _timestamp;
@@ -16,9 +18,13 @@ export default class Timer {
   }
 
   _initTimestamp() {
-    const formatsTimestamp = this._formatsInitialTimestamp(this._initialTimestamp);
-    const validatesTimestamp = this._validatesInitialTimestamp(formatsTimestamp);
-    const timestampInSeconds = this._convertsInitialTimestampInSeconds(validatesTimestamp);
+    const formatsTimestamp = this._formatsInitialTimestamp(
+      this._initialTimestamp
+    );
+    const validatesTimestamp =
+      this._validatesInitialTimestamp(formatsTimestamp);
+    const timestampInSeconds =
+      this._convertsInitialTimestampInSeconds(validatesTimestamp);
 
     this._timestamp = timestampInSeconds;
   }
@@ -54,9 +60,9 @@ export default class Timer {
   }
 
   _displaysTimestampInContainer() {
-    const {
-      hours, minutes, seconds,
-    } = this._convertsTimestampFromSeconds(this._timestamp);
+    const { hours, minutes, seconds } = this._convertsTimestampFromSeconds(
+      this._timestamp
+    );
     const hoursFormatted = this._addsZeroTime(hours);
     const minutesFormatted = this._addsZeroTime(minutes);
     const secondsFormatted = this._addsZeroTime(seconds);
@@ -69,13 +75,16 @@ export default class Timer {
       ${secondsFormatted}
     `;
 
-    this._container.setAttribute('aria-label', `
+    this._container.setAttribute(
+      'aria-label',
+      `
       ${hoursFormatted} 
       :
       ${minutesFormatted} 
       :
       ${secondsFormatted}
-    `);
+    `
+    );
   }
 
   _convertsTimestampFromSeconds(timestamp) {
